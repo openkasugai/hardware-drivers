@@ -1,0 +1,6 @@
+37a38
+> #include <unistd.h>
+150c151
+< struct mcap_dev *MCapLibInit(int device_id);
+---
+> struct mcap_dev *MCapLibInit(int device_id, int _bus, int _dev, int _func);

@@ -1,0 +1,10 @@
+prefix=@PREFIX@
+includedir=@INCDIR@
+libdir=@LIBDIR@
+
+Name: libfpga
+Description: Library for LLDMA(Low Latency Direct Memory Access)
+Version: @VERSION@
+Libs.private: -L${libdir} @LDLIBS@
+Libs: -L${libdir} @WITH_LIBS@ -lpciaccess -ldl -rdynamic -lstdc++
+Cflags: -I${includedir}/libfpga -I${includedir}/driver

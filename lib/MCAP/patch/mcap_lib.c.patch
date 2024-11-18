@@ -1,0 +1,34 @@
+202d201
+< 	u32 delay;
+358c357
+< struct mcap_dev *MCapLibInit(int device_id)
+---
+> struct mcap_dev *MCapLibInit(int device_id, int _bus, int _dev, int _func)
+385,386c384,386
+< 			dev->device_id == device_id) {
+< 			pr_info("Xilinx MCAP device found\n");
+---
+> 			dev->device_id == device_id &&
+> 			dev->bus == _bus && dev->dev == _dev && dev->func == _func) {
+> 			pr_info("Xilinx MCAP device found (%02x:%02x.%01x)\n", dev->bus, dev->dev, dev->func);
+388,389c388
+< 		} else {
+< 			continue;
+---
+> 			break;
+665,666c664,665
+< 	pos = (int) strtol(argv[4], NULL, 16);
+< 	access_type = tolower(argv[5][0]);
+---
+> 	pos = (int) strtol(argv[6], NULL, 16);
+> 	access_type = tolower(argv[7][0]);
+668c667
+< 	if (argc == 6) {
+---
+> 	if (argc == 8) {
+685,686c684,685
+< 	if (argc > 6) {
+< 		wrval = strtoul(argv[6], 0, 0);
+---
+> 	if (argc > 8) {
+> 		wrval = strtoul(argv[8], 0, 0);

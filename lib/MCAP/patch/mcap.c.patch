@@ -1,0 +1,66 @@
+35c35
+< static const char options[] = "x:pC:rmfdvHhDa::";
+---
+> static const char options[] = "s:x:pC:rmfdvHhEDa::";
+40a41,42
+> "\t-s   bb:dd.f\tSpecify Device Id in hex (MANDATORY)\n"
+> "\t            \t  bb:busID, dd:devID, f:funcID\n"
+49a52
+> "\t-E\t\tGet Exit status when Program Bitstream(-p)\n"
+63c66,67
+< 	int programconfigfile = 0;
+---
+> 	int programconfigfile = 0, _bus = 0, _dev = 0, _func = 0;
+> 	int ret = 0, exit_status = 0;
+99c103,112
+< 			device_id = (int) strtol(argv[2], NULL, 16);
+---
+> 			device_id = (int) strtol(optarg, NULL, 16);
+> 			break;
+> 		case 'E':
+> 			exit_status = 1;
+> 			break;
+> 		case 's':
+> 			if (sscanf(optarg, "%x:%x.%x", &_bus, &_dev, &_func) != 3) {
+> 				printf("%s", help_msg);
+> 				return 1;
+> 			}
+106a120,125
+> 	if (exit_status && !program) {
+> 		printf("-E option is available only when -p option is used...\n");
+> 		printf("%s", help_msg);
+> 		return 1;
+> 	}
+> 
+113c132
+< 	mdev = (struct mcap_dev *)MCapLibInit(device_id);
+---
+> 	mdev = (struct mcap_dev *)MCapLibInit(device_id, _bus, _dev, _func);
+123c142
+< 		if (argc < 6) {
+---
+> 		if (argc < 8) {
+148c167
+< 		if (argc > 6)
+---
+> 		if (argc > 8)
+151c170
+< 		MCapConfigureFPGA(mdev, argv[4], EMCAP_PARTIALCONFIG_FILE);
+---
+> 		MCapConfigureFPGA(mdev, argv[6], EMCAP_PARTIALCONFIG_FILE);
+158,159c177,178
+< 		if (argc > 6)
+< 			MCapConfigureFPGA(mdev, argv[6], EMCAP_CONFIG_FILE);
+---
+> 		if (argc > 8 + exit_status)
+> 			ret = MCapConfigureFPGA(mdev, argv[8 + exit_status], EMCAP_CONFIG_FILE);
+161c180,182
+< 			MCapConfigureFPGA(mdev, argv[4], EMCAP_CONFIG_FILE);
+---
+> 			ret = MCapConfigureFPGA(mdev, argv[6 + exit_status], EMCAP_CONFIG_FILE);
+> 		if (!exit_status)
+> 			ret = 0;
+181c202
+< 	return 0;
+---
+> 	return ret;
