@@ -39,9 +39,9 @@ enum FUNC_REG_COUNTER_CONV {
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] fchid
- *   Target function channnel id
+ *   Target Function Channel ID
  * @param[in] reg_id
- *   statistical information type
+ *   Target statistics register ID
  * @param[out] byte_num
  *   statistics (bytes)
  * @retval 0
@@ -71,9 +71,9 @@ int fpga_conv_get_stat_bytes(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] fchid
- *   Target function channnel id
+ *   Target Function Channel ID
  * @param[in] reg_id
- *   statistical information type
+ *   Target statistics register ID
  * @param[out] frame_num
  *   statistics (frames)
  * @retval 0
@@ -151,7 +151,7 @@ int fpga_conv_set_stat_ovf_clear(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] fchid
- *   Target function channnel id
+ *   Target Function Channel ID
  * @param[out] usage_num
  *   number of frame buffer used
  * @retval 0

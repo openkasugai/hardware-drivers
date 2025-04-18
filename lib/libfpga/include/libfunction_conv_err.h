@@ -117,7 +117,7 @@ int fpga_conv_get_check_err(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] dir
- *   direction (0:Ingress/1:Egress)
+ *   Target direction(0:ingress,1:egress)
  * @param[out] func_err_prot
  *   detailed error information
  * @retval 0
@@ -144,7 +144,7 @@ int fpga_conv_get_err_prot(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] dir
- *   direction (0:Ingress/1:Egress)
+ *   Target direction(0:ingress,1:egress)
  * @param[in] func_err_prot
  *   detailed error information
  * @retval 0
@@ -171,7 +171,7 @@ int fpga_conv_set_err_prot_clear(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] dir
- *   direction (0:Ingress/1:Egress)
+ *   Target direction(0:ingress,1:egress)
  * @param[in] func_err_prot
  *   detailed error information
  * @retval 0
@@ -198,7 +198,7 @@ int fpga_conv_set_err_prot_mask(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] dir
- *   direction (0:Ingress/1:Egress)
+ *   Target direction(0:ingress,1:egress)
  * @param[out] func_err_prot
  *   detailed error information
  * @retval 0
@@ -225,7 +225,7 @@ int fpga_conv_get_err_prot_mask(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] dir
- *   direction (0:Ingress/1:Egress)
+ *   Target direction(0:ingress,1:egress)
  * @param[in] func_err_prot
  *   detailed error information
  * @retval 0
@@ -252,7 +252,7 @@ int fpga_conv_set_err_prot_force(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] dir
- *   direction (0:Ingress/1:Egress)
+ *   Target direction(0:ingress,1:egress)
  * @param[out] func_err_prot
  *   detailed error information
  * @retval 0
@@ -281,7 +281,7 @@ int fpga_conv_get_err_prot_force(
  * @param[in] fr_id
  *   control function ID
  * @param[in] dir
- *   direction (0:Ingress/1:Egress)
+ *   Target direction(0:ingress,1:egress)
  * @param[out] func_err_prot
  *   detailed error information
  * @retval 0
@@ -311,7 +311,7 @@ int fpga_conv_get_err_prot_func(
  * @param[in] fr_id
  *   control function ID
  * @param[in] dir
- *   direction (0:Ingress/1:Egress)
+ *   Target direction(0:ingress,1:egress)
  * @param[in] func_err_prot
  *   detailed error information
  * @retval 0
@@ -341,7 +341,7 @@ int fpga_conv_set_err_prot_func_clear(
  * @param[in] fr_id
  *   function ID
  * @param[in] dir
- *   direction (0:Ingress/1:Egress)
+ *   Target direction(0:ingress,1:egress)
  * @param[in] func_err_prot
  *   detailed error information
  * @retval 0
@@ -371,7 +371,7 @@ int fpga_conv_set_err_prot_func_mask(
  * @param[in] fr_id
  *   function ID
  * @param[in] dir
- *   direction (0:Ingress/1:Egress)
+ *   Target direction(0:ingress,1:egress)
  * @param[out] func_err_prot
  *   detailed error information
  * @retval 0
@@ -401,7 +401,7 @@ int fpga_conv_get_err_prot_func_mask(
  * @param[in] fr_id
  *   function ID
  * @param[in] dir
- *   direction (0:Ingress/1:Egress)
+ *   Target direction(0:ingress,1:egress)
  * @param[in] func_err_prot
  *   detailed error information
  * @retval 0
@@ -431,7 +431,7 @@ int fpga_conv_set_err_prot_func_force(
  * @param[in] fr_id
  *   function ID
  * @param[in] dir
- *   direction (0:Ingress/1:Egress)
+ *   Target direction(0:ingress,1:egress)
  * @param[out] func_err_prot
  *   detailed error information
  * @retval 0
@@ -585,8 +585,8 @@ int fpga_conv_get_err_stif_force(
  * @retval -INVALID_ARGUMENT
  *   Bad argument@n
  *   e.g.) `dev_id` is invalid, `lane` is too large
- * @retval -FAILURE_WRITE
- *   pwrite() failure
+ * @retval -FAILURE_READ
+ *   pread() failure
  *
  * @details
  *  Get Conversion Adapter memory parity error notification
@@ -867,7 +867,7 @@ int fpga_conv_get_err_length_fault_force(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] dir
- *   direction (0:Ingress/1:Egress)
+ *   Target direction(0:ingress,1:egress)
  * @param[in] func_err_prot
  *   detailed error information
  * @retval 0
@@ -894,7 +894,7 @@ int fpga_conv_err_prot_ins(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] dir
- *   direction (0:Ingress/1:Egress)
+ *   Target direction(0:ingress,1:egress)
  * @param[out] func_err_prot
  *   detailed error information
  * @retval 0
@@ -923,7 +923,7 @@ int fpga_conv_err_prot_get_ins(
  * @param[in] fr_id
  *   function ID
  * @param[in] dir
- *   direction (0:Ingress/1:Egress)
+ *   Target direction(0:ingress,1:egress)
  * @param[in] func_err_prot
  *   detailed error information
  * @retval 0
@@ -953,7 +953,7 @@ int fpga_conv_err_prot_func_ins(
  * @param[in] fr_id
  *   function ID
  * @param[in] dir
- *   direction (0:Ingress/1:Egress)
+ *   Target direction(0:ingress,1:egress)
  * @param[out] func_err_prot
  *   detailed error information
  * @retval 0

@@ -128,13 +128,13 @@ typedef struct fpga_chain_err_prot {
  * @var fpga_chain_err_evt_t::timeout
  *      timeout
  * @var fpga_chain_err_evt_t::recv_data
- *      recv data
+ *      receive data
  * @var fpga_chain_err_evt_t::send_data
  *      send data
  * @var fpga_chain_err_evt_t::recv_urgent_data
- *      recv urgent data
+ *      receive urgent data
  * @var fpga_chain_err_evt_t::recv_rst
- *      recv_rst
+ *      receive rst
  */
 typedef struct fpga_chain_err_evt {
   uint8_t established;
@@ -153,17 +153,17 @@ typedef struct fpga_chain_err_evt {
  * @struct fpga_chain_err_stif_t
  * @brief Struct for Chain Control Stream Interface Install Information Structure
  * @var fpga_chain_err_stif_t::ingress_req
- *      valid range 1bit
+ *      ingress request. valid range 1bit
  * @var fpga_chain_err_stif_t::ingress_resp
- *      valid range 1bit
+ *      ingress response. valid range 1bit
  * @var fpga_chain_err_stif_t::ingress_data
- *      valid range 1bit
+ *      ingress data. valid range 1bit
  * @var fpga_chain_err_stif_t::egress_req
- *      valid range 1bit
+ *      egress request. valid range 1bit
  * @var fpga_chain_err_stif_t::egress_resp
- *      valid range 1bit
+ *      egress response. valid range 1bit
  * @var fpga_chain_err_stif_t::egress_data
- *      valid range 1bit
+ *      egress data. valid range 1bit
  * @var fpga_chain_err_stif_t::extif_event
  *      external interface event
  * @var fpga_chain_err_stif_t::extif_command
@@ -212,11 +212,11 @@ int fpga_chain_get_check_err(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] extif_id
- *   external IF ID
+ *   external interface ID
  * @param[in] cid_fchid
- *   connection ID/function channel ID
+ *   connection ID/Function Channel ID
  * @param[in] dir
- *   Direction
+ *   Target direction(0:ingress,1:egress)
  * @param[out] chain_err
  *   detailed error information
  * @retval 0
@@ -245,9 +245,9 @@ int fpga_chain_get_err(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] extif_id
- *   external IF ID
+ *   external interface ID
  * @param[in] dir
- *   Direction
+ *   Target direction(0:ingress,1:egress)
  * @param[in] chain_err
  *   detailed error information
  * @retval 0
@@ -275,9 +275,9 @@ int fpga_chain_set_err_mask(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] extif_id
- *   external IF ID
+ *   external interface ID
  * @param[in] dir
- *   Direction
+ *   Target direction(0:ingress,1:egress)
  * @param[out] chain_err
  *   detailed error information
  * @retval 0
@@ -305,9 +305,9 @@ int fpga_chain_get_err_mask(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] extif_id
- *   external IF ID
+ *   external interface ID
  * @param[in] dir
- *   Direction
+ *   Target direction(0:ingress,1:egress)
  * @param[in] chain_err
  *   detailed error information
  * @retval 0
@@ -335,9 +335,9 @@ int fpga_chain_set_err_force(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] extif_id
- *   external IF ID
+ *   external interface ID
  * @param[in] dir
- *   Direction
+ *   Target direction(0:ingress,1:egress)
  * @param[out] chain_err
  *   detailed error information
  * @retval 0
@@ -365,9 +365,9 @@ int fpga_chain_get_err_force(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] extif_id
- *   external IF ID [0,1]
+ *   external interface ID [0,1]
  * @param[in] dir
- *   Direction (0: ingress, 1: egress)
+ *   Target direction(0:ingress,1:egress)
  * @param[in] chain_err
  *   detailed error information
  * @retval 0
@@ -395,9 +395,9 @@ int fpga_chain_err_ins(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] extif_id
- *   external IF ID [0,1]
+ *   external interface ID [0,1]
  * @param[in] dir
- *   Direction (0: ingress, 1: egress)
+ *   Target direction(0:ingress,1:egress)
  * @param[out] chain_err
  *   detailed error information
  * @retval 0
@@ -425,11 +425,11 @@ int fpga_chain_err_get_ins(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] extif_id
- *   external IF ID
+ *   external interface ID
  * @param[in] cid_fchid
- *   connection ID/function channel ID
+ *   connection ID/Function Channel ID
  * @param[in] dir
- *   Direction
+ *   Target direction(0:ingress,1:egress)
  * @param[out] chain_err
  *   detailed error information
  * @retval 0
@@ -458,9 +458,9 @@ int fpga_chain_get_err_table(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] extif_id
- *   external IF ID
+ *   external interface ID
  * @param[in] dir
- *   Direction
+ *   Target direction(0:ingress,1:egress)
  * @param[in] chain_err
  *   detailed error information
  * @retval 0
@@ -488,9 +488,9 @@ int fpga_chain_set_err_table_mask(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] extif_id
- *   external IF ID
+ *   external interface ID
  * @param[in] dir
- *   Direction
+ *   Target direction(0:ingress,1:egress)
  * @param[out] chain_err
  *   detailed error information
  * @retval 0
@@ -518,9 +518,9 @@ int fpga_chain_get_err_table_mask(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] extif_id
- *   external IF ID
+ *   external interface ID
  * @param[in] dir
- *   Direction
+ *   Target direction(0:ingress,1:egress)
  * @param[in] chain_err
  *   detailed error information
  * @retval 0
@@ -548,9 +548,9 @@ int fpga_chain_set_err_table_force(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] extif_id
- *   external IF ID
+ *   external interface ID
  * @param[in] dir
- *   Direction
+ *   Target direction(0:ingress,1:egress)
  * @param[out] chain_err
  *   detailed error information
  * @retval 0
@@ -578,7 +578,7 @@ int fpga_chain_get_err_table_force(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] dir
- *   Direction
+ *   Target direction(0:ingress,1:egress)
  * @param[out] chain_err_prot
  *   detailed error information
  * @retval 0
@@ -605,7 +605,7 @@ int fpga_chain_get_err_prot(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] dir
- *   Direction
+ *   Target direction(0:ingress,1:egress)
  * @param[in] chain_err_prot
  *   detailed error information
  * @retval 0
@@ -632,7 +632,7 @@ int fpga_chain_set_err_prot_clear(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] dir
- *  Direction
+ *   Target direction(0:ingress,1:egress)
  * @param[in] chain_err_prot
  *   detailed error information
  * @retval 0
@@ -659,7 +659,7 @@ int fpga_chain_set_err_prot_mask(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] dir
- *   Direction
+ *   Target direction(0:ingress,1:egress)
  * @param[out] chain_err_prot
  *   detailed error information
  * @retval 0
@@ -686,7 +686,7 @@ int fpga_chain_get_err_prot_mask(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] dir
- *   Direction
+ *   Target direction(0:ingress,1:egress)
  * @param[in] chain_err_prot
  *   detailed error information
  * @retval 0
@@ -713,7 +713,7 @@ int fpga_chain_set_err_prot_force(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] dir
- *   Direction
+ *   Target direction(0:ingress,1:egress)
  * @param[out] chain_err_prot
  *   detailed error information
  * @retval 0
@@ -740,7 +740,7 @@ int fpga_chain_get_err_prot_force(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] dir
- *   Direction (0: ingress, 1: egress)
+ *   Target direction(0:ingress,1:egress)
  * @param[in] chain_err_prot
  *   detailed error information
  * @retval 0
@@ -767,7 +767,7 @@ int fpga_chain_err_prot_ins(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] dir
- *   Direction (0: ingress, 1: egress)
+ *   Target direction(0:ingress,1:egress)
  * @param[out] chain_err_prot
  *   detailed error information
  * @retval 0
@@ -794,7 +794,7 @@ int fpga_chain_err_prot_get_ins(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] extif_id
- *   external IF ID
+ *   external interface ID
  * @param[out] chain_err_evt
  *   detailed error information
  * @retval 0
@@ -821,7 +821,7 @@ int fpga_chain_get_err_evt(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] extif_id
- *   external IF ID
+ *   external interface ID
  * @param[in] chain_err_evt
  *   detailed error information
  * @retval 0
@@ -848,7 +848,7 @@ int fpga_chain_set_err_evt_clear(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] extif_id
- *   external IF ID
+ *   external interface ID
  * @param[in] chain_err_evt
  *   detailed error information
  * @retval 0
@@ -875,7 +875,7 @@ int fpga_chain_set_err_evt_mask(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] extif_id
- *   external IF ID
+ *   external interface ID
  * @param[out] chain_err_evt
  *   detailed error information
  * @retval 0
@@ -902,7 +902,7 @@ int fpga_chain_get_err_evt_mask(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] extif_id
- *   external IF ID
+ *   external interface ID
  * @param[in] chain_err_evt
  *   detailed error information
  * @retval 0
@@ -929,7 +929,7 @@ int fpga_chain_set_err_evt_force(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] extif_id
- *   external IF ID
+ *   external interface ID
  * @param[out] chain_err_evt
  *   detailed error information
  * @retval 0
@@ -1076,12 +1076,11 @@ int fpga_chain_get_err_stif_force(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] extif_id
- *   external IF ID [0,1]
+ *   external interface ID [0,1]
  * @param[in] ins_enable
  *   Enables pseudo failure (CID override) (0: Clear, 1: Pseudo-failure setting).
  * @param[in] cid
- *   Target connection id
- *  cid: Connection ID (Don'tCare when ins_enable= 0
+ *   Target connection ID. (Don't Care when ins_enable = 0)
  * @retval 0
  *   Success
  * @retval -INVALID_ARGUMENT
@@ -1107,12 +1106,11 @@ int fpga_chain_err_cmdfault_ins(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] extif_id
- *   external IF ID [0,1]
+ *   external interface ID [0,1]
  * @param[out] ins_enable
  *   Enables pseudo failure (CID override) (0: Clear, 1: Pseudo-failure setting).
  * @param[out] cid
- *   Target connection id
- *  cid: Connection ID (Don'tCare when ins_enable= 0
+ *   Target connection ID. (Don't Care when ins_enable = 0)
  * @retval 0
  *   Success
  * @retval -INVALID_ARGUMENT

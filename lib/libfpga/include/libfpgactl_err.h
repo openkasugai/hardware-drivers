@@ -294,7 +294,7 @@ int fpga_dev_set_ecc_err_clear(
  * @param[in] dev_id
  *   FPGA's device id got by fpga_dev_init()
  * @param[out] eccerr
- *   eccerr: Value obtained from ECC error notification (raw value) of DDR
+ *   Value obtained from ECC error notification (raw value) of DDR
  * @retval 0
  *   Success
  * @retval -INVALID_ARGUMENT

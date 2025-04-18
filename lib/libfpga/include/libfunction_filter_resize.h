@@ -121,7 +121,7 @@ int fpga_filter_resize_get_control(
  *   FPGA's device id got by fpga_dev_init()
  * @param[in] lane
  *   Target lane of FPGA's module
- * @param[out] control
+ * @param[out] module_id
  *   module_id register value
  * @retval 0
  *   Success
