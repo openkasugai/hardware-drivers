@@ -412,14 +412,6 @@ _END51:
 	// fdma finish
 	tp_dequeue_fdma_finish(*get_dev_id(1));
 
-_END50:
-	// fdma finish
-	tp_dequeue_fdma_finish(*get_dev_id(0));
-
-_END41:
-	// fdma finish
-	tp_enqueue_fdma_finish(*get_dev_id(1));
-
 _END40:
 	// fdma finish
 	tp_enqueue_fdma_finish(*get_dev_id(0));

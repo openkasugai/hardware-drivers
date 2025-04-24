@@ -5,7 +5,7 @@ This program is a sample program for verifying the function chaining implementat
 ### Version:1.0.0
 
 ## Build and Execution
-Refer to ["Installation Procedure" in the tutorial](https://github.com/compsysg/openkasugai-hardware-design/blob/main/TUTORIAL.md#2-installation-procedure).
+Refer to ["Installation Procedure" in the tutorial](https://github.com/openkasugai/hardware-design/blob/feature/path_change/TUTORIAL.md#2-installation-procedure).
 
 ## Files in sample program[sample_tester]
 - Note: partially omitted
