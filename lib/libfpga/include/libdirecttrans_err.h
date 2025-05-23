@@ -134,7 +134,7 @@ int fpga_direct_get_check_err(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] dir
- *   Target direction(0:ingress,1:egress)
+ *   Target direction type (0: Ingress input, 1: Ingress output, 2: Egress input, 3: Egress output, Others: Disabled)
  * @param[out] direct_err_prot
  *   detailed error information
  * @retval 0
@@ -161,7 +161,7 @@ int fpga_direct_get_err_prot(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] dir
- *   Target direction(0:ingress,1:egress)
+ *   Target direction type (0: Ingress input, 1: Ingress output, 2: Egress input, 3: Egress output, Others: Disabled)
  * @param[in] direct_err_prot
  *  direct_err_prot: detailed error information
  * @retval 0
@@ -188,7 +188,7 @@ int fpga_direct_set_err_prot_clear(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] dir
- *   Target direction(0:ingress,1:egress)
+ *   Target direction type (0: Ingress input, 1: Ingress output, 2: Egress input, 3: Egress output, Others: Disabled)
  * @param[in] direct_err_prot
  *   error details
  * @retval 0
@@ -213,7 +213,7 @@ int fpga_direct_set_err_prot_mask(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] dir
- *   Target direction(0:ingress,1:egress)
+ *   Target direction type (0: Ingress input, 1: Ingress output, 2: Egress input, 3: Egress output, Others: Disabled)
  * @param[out] direct_err_prot
  *   error details
  * @retval 0
@@ -240,7 +240,7 @@ int fpga_direct_get_err_prot_mask(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] dir
- *   Target direction(0:ingress,1:egress)
+ *   Target direction type (0: Ingress input, 1: Ingress output, 2: Egress input, 3: Egress output, Others: Disabled)
  * @param[in] direct_err_prot
  *   error details
  * @retval 0
@@ -267,7 +267,7 @@ int fpga_direct_set_err_prot_force(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] dir
- *   Target direction(0:ingress,1:egress)
+ *   Target direction type (0: Ingress input, 1: Ingress output, 2: Egress input, 3: Egress output, Others: Disabled)
  * @param[out] direct_err_prot
  *   error details
  * @retval 0
@@ -294,7 +294,7 @@ int fpga_direct_get_err_prot_force(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] dir_type
- *   Target direction type (0: Ingress input/1: Ingress output/2: Egress input/3: Egress output/Others: Disabled)
+ *   Target direction type (0: Ingress input, 1: Ingress output, 2: Egress input, 3: Egress output, Others: Disabled)
  * @param[in] direct_err_prot
  *   error details
  * @retval 0
@@ -321,7 +321,7 @@ int fpga_direct_err_prot_ins(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] dir_type
- *   Target direction type (0: Ingress input/1: Ingress output/2: Egress input/3: Egress output/Others: Disabled)
+ *   Target direction type (0: Ingress input, 1: Ingress output, 2: Egress input, 3: Egress output, Others: Disabled)
  * @param[out] direct_err_prot
  *   error details
  * @retval 0

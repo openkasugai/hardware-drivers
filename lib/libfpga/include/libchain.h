@@ -30,17 +30,17 @@ extern "C" {
 #define CID_MAX                 XPCIE_CID_MAX
 
 /**
- * Min function chain id value from xpcie_device.h
+ * Min function channel id value from xpcie_device.h
  */
 #define FUNCTION_CHAIN_ID_MIN   XPCIE_FUNCTION_CHAIN_ID_MIN
 
 /**
- * Max function chain id value from xpcie_device.h
+ * Max function channel id value from xpcie_device.h
  */
 #define FUNCTION_CHAIN_ID_MAX   XPCIE_FUNCTION_CHAIN_ID_MAX
 
 /**
- * Max function chain id value from xpcie_device.h
+ * Max function channel id value from xpcie_device.h
  */
 #define IS_VALID_FUNCTION_CHAIN_ID(fchid) \
   ((fchid) <= FUNCTION_CHAIN_ID_MAX && (fchid) >= FUNCTION_CHAIN_ID_MIN)
@@ -348,6 +348,12 @@ int fpga_chain_connect_egress(
  * @retval -INVALID_ARGUMENT
  *   Bad argument@n
  *   e.g.) `dev_id` is invalid, `lane` is too large
+ * @retval -FAILURE_IOCTL
+ *   ioctl failure
+ * @retval -TABLE_UPDATE_TIMEOUT
+ *   Function chain setting in FPGA failed
+ * @retval -FUNC_CHAIN_ID_MISMATCH
+ *   Function channel ID not found
  *
  * @details
  *   fpga_chain_disconnect_ingress/egress()
@@ -378,7 +384,7 @@ int fpga_chain_disconnect(
  * @retval -TABLE_UPDATE_TIMEOUT
  *   Function chain setting in FPGA failed
  * @retval -FUNC_CHAIN_ID_MISMATCH
- *   Function chain ID not found
+ *   Function channel ID not found
  *
  * @details
  *   For the kernel in the FPGA of the device specified by the argument:
@@ -408,7 +414,7 @@ int fpga_chain_disconnect_ingress(
  * @retval -TABLE_UPDATE_TIMEOUT
  *   Function chain setting in FPGA failed
  * @retval -FUNC_CHAIN_ID_MISMATCH
- *   Function chain ID not found
+ *   Function channel ID not found
  *
  * @details
  *   For the kernel in the FPGA of the device specified by the argument:
