@@ -149,6 +149,8 @@ typedef struct fpga_func_err_prot {
  *   Failed to allocate memory
  * @retval -INVALID_DATA
  *   e.g.) Not found function name(name converted hyphen to under score from `func_type`) in shared libraries list
+ * @retval -LIBFPGA_FATAL_ERROR
+ *   Initializing memory failed
  *
  * @details
  *   Search function operation mathcing function name with
@@ -185,6 +187,8 @@ int fpga_function_config(
  *   e.g.) Not found function configuration data at the index(`dev_id` and `lane`)
  * @retval -FAILURE_MEMORY_ALLOC
  *   Failed to allocate memory
+ * @retval -LIBFPGA_FATAL_ERROR
+ *   Initializing memory failed
  *
  * @details
  *   Get configuration data's function name from `dev_id` and `lane`.
@@ -210,6 +214,8 @@ int fpga_function_get_config_name(
  *   e.g.) `dev_id` is invalid, `lane` is too large
  * @retval -INVALID_DATA
  *   e.g.) The data of function operations table is `NULL`
+ * @retval -LIBFPGA_FATAL_ERROR
+ *   Initializing memory failed
  * @return Depends on each operations' fpga_function_ops_t::init()
  *
  * @details
@@ -239,6 +245,8 @@ int fpga_function_init(
  *   e.g.) `dev_id` is invalid, `lane` is too large
  * @retval -INVALID_DATA
  *   e.g.) The data of function operations table is `NULL`
+ * @retval -LIBFPGA_FATAL_ERROR
+ *   Initializing memory failed
  * @return Depends on each operations' fpga_function_ops_t::set()
  *
  * @details
@@ -269,6 +277,8 @@ int fpga_function_set(
  *   e.g.) `dev_id` is invalid, `lane` is too large
  * @retval -INVALID_DATA
  *   e.g.) The data of function operations table is `NULL`
+ * @retval -LIBFPGA_FATAL_ERROR
+ *   Initializing memory failed
  * @return Depends on each operations' fpga_function_ops_t::get()
  *
  * @details
@@ -301,6 +311,8 @@ int fpga_function_get(
  *   e.g.) `dev_id` is invalid, `lane` is too large
  * @retval -INVALID_DATA
  *   e.g.) The data of function operations table is `NULL`
+ * @retval -LIBFPGA_FATAL_ERROR
+ *   Initializing memory failed
  * @return Depends on each operations' fpga_function_ops_t::finish()
  *
  * @details
@@ -332,6 +344,8 @@ int fpga_function_finish(
  *   e.g.) function operation list has no free region
  * @retval -ALREADY_ASSIGNED
  *   e.g.) function operation list has the same function operation
+ * @retval -LIBFPGA_FATAL_ERROR
+ *   Initializing memory failed
  *   
  * @details
  *   Set operations to be settable by fpga_function_config()
@@ -351,6 +365,8 @@ int fpga_function_register(
  *   e.g.) `ops` is null, `ops->name` is null
  * @retval -INVALID_DATA
  *   e.g.) Not found mathcing data in the function operations list
+ * @retval -LIBFPGA_FATAL_ERROR
+ *   Initializing memory failed
  *   
  * @details
  *   Set NULL to the function operations list at the index whose name(`fpga_function_ops_t::name`) is the same
@@ -376,6 +392,8 @@ int fpga_function_unregister(
  *   e.g.) Mathing file name is not exist
  * @retval -INVALID_DATA
  *   e.g.) Failed to get a symbol
+ * @retval -LIBFPGA_FATAL_ERROR
+ *   Initializing memory failed
  * @return
  *   See also fpga_function_register_***() in the target library
  *
@@ -412,6 +430,8 @@ int fpga_function_load(
  *   Failed to allocate memory
  * @retval -INVALID_DATA
  *   e.g.) Matching data is not found
+ * @retval -LIBFPGA_FATAL_ERROR
+ *   Initializing memory failed
  * @return
  *   @sa fpga_function_unregister()
  *

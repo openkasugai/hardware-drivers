@@ -90,8 +90,10 @@ int fpga_conv_set(
  * @retval -INVALID_ARGUMENT
  *   bad argument@n
  *   e.g.) `dev_id` is invalid, `lane` is too large
- * @retval FAILURE_READ
+ * @retval -FAILURE_READ
  *   read() failure
+ * @retval -FAILURE_MEMORY_ALLOC
+ *   Failed to allocate memory for json string
  *
  * @details
  *   Read the register of the following parameters set by fpga_function_set().

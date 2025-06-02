@@ -30,17 +30,17 @@ extern "C" {
 #define CID_MAX                 XPCIE_CID_MAX
 
 /**
- * Min function chain id value from xpcie_device.h
+ * Min function channel id value from xpcie_device.h
  */
 #define FUNCTION_CHAIN_ID_MIN   XPCIE_FUNCTION_CHAIN_ID_MIN
 
 /**
- * Max function chain id value from xpcie_device.h
+ * Max function channel id value from xpcie_device.h
  */
 #define FUNCTION_CHAIN_ID_MAX   XPCIE_FUNCTION_CHAIN_ID_MAX
 
 /**
- * Max function chain id value from xpcie_device.h
+ * Max function channel id value from xpcie_device.h
  */
 #define IS_VALID_FUNCTION_CHAIN_ID(fchid) \
   ((fchid) <= FUNCTION_CHAIN_ID_MAX && (fchid) >= FUNCTION_CHAIN_ID_MIN)
@@ -151,7 +151,7 @@ int fpga_chain_stop(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] extif_id
- *   External IF ID
+ *   external interface ID
  * @retval 0
  *   Success
  * @retval -INVALID_ARGUMENT
@@ -175,7 +175,7 @@ int fpga_chain_set_ddr(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] extif_id
- *   external IF ID
+ *   external interface ID
  * @param[out] chain_ddr
  *   DDR offset setting information
  * @retval 0
@@ -203,15 +203,15 @@ int fpga_chain_get_ddr(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] fchid
- *   Target function channel id
+ *   Target Function Channel ID
  * @param[in] ingress_extif_id
- *   external IFID for ingress side
+ *   Ingress external interface ID
  * @param[in] ingress_cid
- *   Target connection id for ingress chain
+ *   Target connection ID for ingress chain
  * @param[in] egress_extif_id
- *   external IFID of egress side
+ *   Egress external interface ID
  * @param[in] egress_cid
- *   Target connection id for egress chain
+ *   Target connection ID for egress chain
  * @param[in] ingress_active_flag
  *   Forwarding permission setting
  * @param[in] egress_active_flag
@@ -229,6 +229,8 @@ int fpga_chain_get_ddr(
  *   e.g.) `dev_id` is invalid, `lane` is too large
  * @retval -FAILURE_IOCTL
  *   ioctl failure
+ * @retval -TABLE_UPDATE_TIMEOUT
+ *   Function chain setting in FPGA failed
  *
  * @details
  *   fpga_chain_connect_ingress/egress().
@@ -257,11 +259,11 @@ int fpga_chain_connect(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] fchid
- *   Target function channel id
+ *   Target Function Channel ID
  * @param[in] ingress_extif_id
- *   external IFID for ingress side
+ *   Ingress external interface ID
  * @param[in] ingress_cid
- *   Target connection id for ingress chain
+ *   Target connection ID for ingress chain
  * @param[in] active_flag
  *   transfer permission flag
  * @param[in] direct_flag
@@ -273,7 +275,7 @@ int fpga_chain_connect(
  *   e.g.) `dev_id` is invalid, `lane` is too large
  * @retval -FAILURE_IOCTL
  *   ioctl failure
- * @retval TABLE_UPDATE_TIMEOUT
+ * @retval -TABLE_UPDATE_TIMEOUT
  *   Function chain setting in FPGA failed
  *
  * @details
@@ -297,15 +299,13 @@ int fpga_chain_connect_ingress(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] fchid
- *   Target function channel id
+ *   Target Function Channel ID
  * @param[in] egress_extif_id
- *   external IFID of egress side
+ *   Egress external interface ID
  * @param[in] egress_cid
- *   Target connection id for egress chain
+ *   Target connection ID for egress chain
  * @param[in] active_flag
  *   transfer permission flag
- * @param[in] direct_flag
- *   direct transfer enable flag
  * @param[in] virtual_flag
  *   virtual connection flag
  * @param[in] blocking_flag
@@ -317,7 +317,7 @@ int fpga_chain_connect_ingress(
  *   e.g.) `dev_id` is invalid, `lane` is too large
  * @retval -FAILURE_IOCTL
  *   ioctl failure
- * @retval TABLE_UPDATE_TIMEOUT
+ * @retval -TABLE_UPDATE_TIMEOUT
  *   Function chain setting in FPGA failed
  *
  * @details
@@ -342,7 +342,7 @@ int fpga_chain_connect_egress(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] fchid
- *   Target function channel id
+ *   Target Function Channel ID
  * @retval 0
  *   Success
  * @retval -INVALID_ARGUMENT
@@ -350,6 +350,10 @@ int fpga_chain_connect_egress(
  *   e.g.) `dev_id` is invalid, `lane` is too large
  * @retval -FAILURE_IOCTL
  *   ioctl failure
+ * @retval -TABLE_UPDATE_TIMEOUT
+ *   Function chain setting in FPGA failed
+ * @retval -FUNC_CHAIN_ID_MISMATCH
+ *   Function channel ID not found
  *
  * @details
  *   fpga_chain_disconnect_ingress/egress()
@@ -369,7 +373,7 @@ int fpga_chain_disconnect(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] fchid
- *   Target function channel id
+ *   Target Function Channel ID
  * @retval 0
  *   Success
  * @retval -INVALID_ARGUMENT
@@ -377,8 +381,10 @@ int fpga_chain_disconnect(
  *   e.g.) `dev_id` is invalid, `lane` is too large
  * @retval -FAILURE_IOCTL
  *   ioctl failure
- * @retval TABLE_UPDATE_TIMEOUT
+ * @retval -TABLE_UPDATE_TIMEOUT
  *   Function chain setting in FPGA failed
+ * @retval -FUNC_CHAIN_ID_MISMATCH
+ *   Function channel ID not found
  *
  * @details
  *   For the kernel in the FPGA of the device specified by the argument:
@@ -397,7 +403,7 @@ int fpga_chain_disconnect_ingress(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] fchid
- *   Target function channel id
+ *   Target Function Channel ID
  * @retval 0
  *   Success
  * @retval -INVALID_ARGUMENT
@@ -405,8 +411,10 @@ int fpga_chain_disconnect_ingress(
  *   e.g.) `dev_id` is invalid, `lane` is too large
  * @retval -FAILURE_IOCTL
  *   ioctl failure
- * @retval TABLE_UPDATE_TIMEOUT
+ * @retval -TABLE_UPDATE_TIMEOUT
  *   Function chain setting in FPGA failed
+ * @retval -FUNC_CHAIN_ID_MISMATCH
+ *   Function channel ID not found
  *
  * @details
  *   For the kernel in the FPGA of the device specified by the argument:
@@ -425,9 +433,9 @@ int fpga_chain_disconnect_egress(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] ingress_extif_id
- *   external IFID for ingress side
+ *   Ingress external interface ID
  * @param[in] ingress_cid
- *   Target connection id for ingress chain
+ *   Target connection ID for ingress chain
  * @param[out] enable_flag
  *   chain table enable flag
  * @param[out] active_flag
@@ -443,6 +451,10 @@ int fpga_chain_disconnect_egress(
  *   e.g.) `dev_id` is invalid, `lane` is too large
  * @retval -FAILURE_IOCTL
  *   ioctl failure
+ * @retval -TABLE_UPDATE_TIMEOUT
+ *   Function chain setting in FPGA failed
+ * @retval -FUNC_CHAIN_ID_MISMATCH
+ *   Function Chain ID not found
  *
  * @details
  *   read fchid connected to ingress_cid
@@ -464,7 +476,7 @@ int fpga_chain_read_table_ingress(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] fchid
- *   Target function channel id
+ *   Target Function Channel ID
  * @param[out] enable_flag
  *   table enable flag
  * @param[out] active_flag
@@ -474,7 +486,7 @@ int fpga_chain_read_table_ingress(
  * @param[out] blocking_flag
  *   blocking forwarding flag
  * @param[out] egress_extif_id
- *   external IFID of egress side
+ *   Egress external interface ID
  * @param[out] egress_cid
  *   connection ID on egress side
  * @retval 0
@@ -484,6 +496,10 @@ int fpga_chain_read_table_ingress(
  *   e.g.) `dev_id` is invalid, `lane` is too large
  * @retval -FAILURE_IOCTL
  *   ioctl failure
+ * @retval -TABLE_UPDATE_TIMEOUT
+ *   Function chain setting in FPGA failed
+ * @retval -FUNC_CHAIN_ID_MISMATCH
+ *   Function Chain ID not found
  *
  * @details
  *   read cid on egress side connected to function fchid
@@ -506,7 +522,7 @@ int fpga_chain_read_table_egress(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] fchid
- *   Target function channel id
+ *   Target Function Channel ID
  * @param[out] ingress_extif_id
  *   Pointer variable to get extif_id on ingress side
  * @param[out] ingress_cid
@@ -556,7 +572,7 @@ int fpga_chain_read_soft_table(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] fchid
- *   Target function channel id
+ *   Target Function Channel ID
  * @param[in] timeout
  *   Timeout for polling
  * @param[in] interval
@@ -600,7 +616,7 @@ int fpga_chain_wait_connection_ingress(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] fchid
- *   Target function channel id
+ *   Target Function Channel ID
  * @param[in] timeout
  *   Timeout for polling
  * @param[in] interval
@@ -644,7 +660,7 @@ int fpga_chain_wait_connection_egress(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] fchid
- *   Target function channel id
+ *   Target Function Channel ID
  * @param[in] timeout
  *   Timeout for polling
  * @param[in] interval
@@ -688,7 +704,7 @@ int fpga_chain_wait_disconnection_ingress(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] fchid
- *   Target function channel id
+ *   Target Function Channel ID
  * @param[in] timeout
  *   Timeout for polling
  * @param[in] interval
@@ -780,9 +796,9 @@ int fpga_chain_get_module_id(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] extif_id
- *   external IFID
+ *   external interface ID
  * @param[in] cid
- *   Target connection id
+ *   Target connection ID
  * @param[out] status
  *   status register value
  * @retval 0

@@ -100,7 +100,7 @@ int fpga_filter_resize_get_check_err(
  * @param[in] fr_id
  *   control function ID
  * @param[in] dir
- *   Ingress/Egress
+ *   Target direction(0:ingress,1:egress)
  * @param[out] func_err_prot
  *   detailed error information
  * @retval 0
@@ -130,7 +130,7 @@ int fpga_filter_resize_get_err_prot(
  * @param[in] fr_id
  *   control function ID
  * @param[in] dir
- *   Ingress/Egress
+ *   Target direction(0:ingress,1:egress)
  * @param[in] func_err_prot
  *   detailed error information
  * @retval 0
@@ -160,7 +160,7 @@ int fpga_filter_resize_set_err_prot_clear(
  * @param[in] fr_id
  *   control function ID
  * @param[in] dir
- *   Ingress/Egress
+ *   Target direction(0:ingress,1:egress)
  * @param[in] func_err_prot
  *   detailed error information
  * @retval 0
@@ -190,7 +190,7 @@ int fpga_filter_resize_set_err_prot_mask(
  * @param[in] fr_id
  *   control function ID
  * @param[in] dir
- *   Ingress/Egress
+ *   Target direction(0:ingress,1:egress)
  * @param[out] func_err_prot
  *   detailed error information
  * @retval 0
@@ -220,7 +220,7 @@ int fpga_filter_resize_get_err_prot_mask(
  * @param[in] fr_id
  *   control function ID
  * @param[in] dir
- *   Ingress/Egress
+ *   Target direction(0:ingress,1:egress)
  * @param[in] func_err_prot
  *   detailed error information
  * @retval 0
@@ -250,7 +250,7 @@ int fpga_filter_resize_set_err_prot_force(
  * @param[in] fr_id
  *   control function ID
  * @param[in] dir
- *   Ingress/Egress
+ *   Target direction(0:ingress,1:egress)
  * @param[out] func_err_prot
  *   detailed error information
  * @retval 0
@@ -400,7 +400,7 @@ int fpga_filter_resize_get_err_stif_force(
  * @param[in] fr_id
  *   control function ID
  * @param[in] dir
- *   Ingress/Egress
+ *   Target direction(0:ingress,1:egress)
  * @param[in] func_err_prot
  *   detailed error information
  * @retval 0
@@ -430,7 +430,7 @@ int fpga_filter_resize_err_prot_ins(
  * @param[in] fr_id
  *   control function ID
  * @param[in] dir
- *   Ingress/Egress
+ *   Target direction(0:ingress,1:egress)
  * @param[out] func_err_prot
  *   detailed error information
  * @retval 0

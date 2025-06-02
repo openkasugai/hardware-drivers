@@ -657,8 +657,6 @@ int fpga_disable_regrw(
  * @param void
  * @retval 0
  *   Success
- * @retval -INVALID_ARGUMENT
- *   `dev_id` is invalid value
  * @retval -FAILURE_IOCTL
  *   e.g.) xpcie_device.h used in driver and lib differ
  *
@@ -674,8 +672,6 @@ int fpga_enable_regrw_all(void);
  * @param void
  * @retval 0
  *   Success
- * @retval -INVALID_ARGUMENT
- *   `dev_id` is invalid value
  * @retval -FAILURE_IOCTL
  *   e.g.) xpcie_device.h used in driver and lib differ
  *

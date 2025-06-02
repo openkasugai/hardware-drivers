@@ -25,11 +25,11 @@ extern "C" {
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] extif_id
- *   External IF ID
+ *   external interface ID
  * @param[in] dir
- *   Direction
+ *   Target direction(0:ingress,1:egress)
  * @param[in] cid
- *   Connection ID
+ *   Target connection ID
  * @param[out] latency
  *   delay in clock cycles
  * @retval 0
@@ -58,9 +58,9 @@ int fpga_chain_get_stat_latency_self(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] fchid
- *   Target function channnel id
+ *   Target Function Channel ID
  * @param[out] latency
- *   number of clock cycles
+ *   Number of clock cycles
  * @retval 0
  *   Success
  * @retval -INVALID_ARGUMENT
@@ -85,11 +85,11 @@ int fpga_chain_get_stat_latency_func(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] cid_fchid
- *   connection ID/function channel ID
+ *   connection ID/Function Channel ID
  * @param[in] reg_id
- *   reg_id: statistics register identifier
+ *   Target statistics register ID
  * @param[out] byte_num
- *   number-of-bytes
+ *   Number of bytes 
  * @retval 0
  *   Success
  * @retval -INVALID_ARGUMENT
@@ -115,11 +115,11 @@ int fpga_chain_get_stat_bytes(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] fchid
- *   Target function channnel id
+ *   Target Function Channel ID
  * @param[in] reg_id
- *   statistics register identifier
+ *   Target statistics register ID
  * @param[out] frame_num
- *   number of frames
+ *   Number of frames
  * @retval 0
  *   Success
  * @retval -INVALID_ARGUMENT
@@ -145,11 +145,11 @@ int fpga_chain_get_stat_frames(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] fchid
- *   Target function channnel id
+ *   Target Function Channel ID
  * @param[in] reg_id
- *   statistics register identifier
+ *   Target statistics register ID
  * @param[out] byte_num
- *   number-of-bytes-to-be-discarded
+ *   Number of bytes discarded
  * @retval 0
  *   Success
  * @retval -INVALID_ARGUMENT
@@ -175,9 +175,9 @@ int fpga_chain_get_stat_discard_bytes(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] fchid
- *   Target function channnel id
+ *   Target Function Channel ID
  * @param[out] buff_num
- *   number of header buffers
+ *   Number of header buffers
  * @retval 0
  *   Success
  * @retval -INVALID_ARGUMENT
@@ -202,7 +202,7 @@ int fpga_chain_get_stat_buff(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] fchid
- *   Target function channnel id
+ *   Target Function Channel ID
  * @param[out] bp
  *   Notification of BP occurrence associated with header buffer full
  * @retval 0
@@ -229,9 +229,9 @@ int fpga_chain_get_stat_bp(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] fchid
- *   Target function channnel id
+ *   Target Function Channel ID
  * @param[in] bp
- *   Notification of BP occurrence associated with header buffer full
+ *   Clear notification of BP
  * @retval 0
  *   Success
  * @retval -INVALID_ARGUMENT
@@ -256,7 +256,7 @@ int fpga_chain_set_stat_bp_clear(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] fchid
- *   Target function channnel id
+ *   Target Function Channel ID
  * @param[out] busy
  *   Egress side data transfer busy
  * @retval 0
@@ -283,7 +283,7 @@ int fpga_chain_get_stat_egr_busy(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] fchid
- *   Target function channnel id
+ *   Target Function Channel ID
  * @param[in] timeout
  *   Timeout for polling
  * @param[in] interval

@@ -237,7 +237,7 @@ int libfpga_log_get_timestamp(void);
  *   usage: `<APP> [-ptsf] [-l <level>]@n
  *   options :
  *   @li -l, --lib-loglevel      : set logLevel
- *   @li -p, --set-timestamp     : enable timestamP
+ *   @li -p, --set-timestamp     : enable timestamp
  *   @li -t, --quit-timestamp    : disable Timestamp
  *   @li -s, --set-output-stdout : output:only Stdout(not create file)
  *   @li -f, --set-output-file   : output:logFile(create file)

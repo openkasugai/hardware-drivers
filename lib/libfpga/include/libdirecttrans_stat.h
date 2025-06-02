@@ -39,11 +39,11 @@ extern "C" {
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] fchid
- *   Target function channnel id
+ *   Target Function Channel ID
  * @param[in] reg_id
- *   Statistics Register ID
+ *   Target statistics register ID
  * @param[out] byte_num
- *   number of bytes
+ *   Number of bytes
  * @retval 0
  *   Success
  * @retval -INVALID_ARGUMENT
@@ -69,11 +69,11 @@ int fpga_direct_get_stat_bytes(
  * @param[in] lane
  *   Target lane of FPGA's module
  * @param[in] fchid
- *   Target function channnel id
+ *   Target Function Channel ID
  * @param[in] reg_id
- *   Statistics Register ID
+ *   Target statistics register ID
  * @param[out] frame_num
- *   number of frames
+ *   Number of frames
  * @retval 0
  *   Success
  * @retval -INVALID_ARGUMENT
